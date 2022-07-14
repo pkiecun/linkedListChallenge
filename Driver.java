@@ -22,14 +22,16 @@ public class Driver {
         testTwo = testTwo.addTo(testTwo, 5);
         testTwo = testTwo.addTo(testTwo, 6);
         testTwo.getBody().getTail().getTail().setTail(testOne.getBody().getTail().getTail());
+
         LinkedListChallenge resultDuplicate = new LinkedListChallenge();
         resultDuplicate.setBody(resultDuplicate.duplicateCheck(testOne, testTwo));
-        if(resultDuplicate == null){
+        if(resultDuplicate.getBody() == null){
             System.out.println("No duplicate nodes found.");
         }else{
-            System.out.println("Duplicate found at " + resultDuplicate.getBody().toString());
+            System.out.println("Duplicate found at " + resultDuplicate.getBody());
         }
 
+        System.out.println("Test reference " + testOne.getBody().getTail().getTail());
 
     }
 }

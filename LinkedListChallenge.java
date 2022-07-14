@@ -29,6 +29,10 @@ public class LinkedListChallenge {
         return "Position " + this.data + ".";
     }
 
+    public int getData(){
+        return this.data;
+    }
+
     }
 
     public LinkedListChallenge(){}
@@ -72,14 +76,19 @@ public class LinkedListChallenge {
     }
 
     public Body duplicateCheck(LinkedListChallenge first, LinkedListChallenge second){
-        if(first.body == null | second.body == null){
+        System.out.println("zero");
+         if(first.body == null || second.body == null){
+            System.out.println("First");
             return null;
         }else{
+             System.out.println("second");
             Body ticket = first.body;
             Body pass = second.body;
-            while(ticket.tail != null){
-                while(pass.tail != null){
+            while(ticket != null){
+                while(pass != null){
+                   // System.out.println(ticket + " " + pass);
                     if(ticket == pass){
+                        System.out.println("third");
                         return ticket;
                     }else{
                         pass = pass.tail;
