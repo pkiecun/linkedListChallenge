@@ -1,8 +1,11 @@
+import java.util.HashSet;
+import java.util.Set;
+
 public class LinkedListChallenge {
 
     private Body body;
 
-    static class Body {
+     class Body {
 
 
     private int data;
@@ -13,6 +16,17 @@ public class LinkedListChallenge {
     public Body(int data){
         this.data = data;
         this.tail = null;
+    }
+    public Body getTail(){
+        return this.tail;
+    }
+
+    public void setTail(Body tail){
+        this.tail = tail;
+    }
+
+    public String toString(){
+        return "Position " + this.data + ".";
     }
 
     }
@@ -40,5 +54,50 @@ public class LinkedListChallenge {
         return list;
     }
 
+    public Body checkLoop(LinkedListChallenge list){
+        if(list.body == null){
+            return null;
+        }else {
+            Set<Body> suit = new HashSet<>();
+            Body ticket = list.body;
+            while (ticket.tail != null){
+                if(suit.add(ticket)){
+                    ticket = ticket.tail;
+                }else{
+                    return ticket;
+                }
+            }
+                return null;
+        }
+    }
+
+    public Body duplicateCheck(LinkedListChallenge first, LinkedListChallenge second){
+        if(first.body == null | second.body == null){
+            return null;
+        }else{
+            Body ticket = first.body;
+            Body pass = second.body;
+            while(ticket.tail != null){
+                while(pass.tail != null){
+                    if(ticket == pass){
+                        return ticket;
+                    }else{
+                        pass = pass.tail;
+                    }
+                }
+                ticket = ticket.tail;
+                pass = second.body;
+            }
+            return null;
+        }
+    }
+
+    public Body getBody(){
+         return this.body;
+    }
+
+    public void setBody(Body body){
+         this.body = body;
+    }
 
 }
